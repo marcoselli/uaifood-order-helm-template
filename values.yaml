@@ -1,0 +1,21 @@
+replicaCount: 2
+image:
+  repository: devmarco/uaifood-order
+  pullPolicy: IfNotPresent
+  tag: 1.0.2
+  port: 8080
+service:
+  type: NodePort
+  port: 80
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 300m
+    memory: 512Mi
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
